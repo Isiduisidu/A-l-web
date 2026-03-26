@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A/L Study Portal - Geography, Media, Sinhala</title>
+    <meta name="description" content="A personal portal for A/L students to organize and watch class recordings.">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <i class='bx bxs-graduation'></i>
+                <h2>A/L Portal</h2>
+            </div>
+            <ul class="nav-links">
+                <li class="active" data-subject="all">
+                    <i class='bx bx-grid-alt'></i>
+                    <span>සියලුම (All)</span>
+                </li>
+                <li data-subject="geography">
+                    <i class='bx bx-globe'></i>
+                    <span>භූගෝල විද්‍යාව (Geography)</span>
+                </li>
+                <li data-subject="media">
+                    <i class='bx bx-video'></i>
+                    <span>සන්නිවේදනය (Media)</span>
+                </li>
+                <li data-subject="sinhala">
+                    <i class='bx bx-book-content'></i>
+                    <span>සිංහල (Sinhala)</span>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-header">
+                <div class="header-titles">
+                    <h1 id="page-title">සියලුම පාඩම් (All Lessons)</h1>
+                    <p class="subtitle">ඔබගේ පන්ති වල වීඩියෝ පහසුවෙන් නරඹන්න</p>
+                </div>
+                <button class="add-btn" id="openModalBtn">
+                    <i class='bx bx-plus'></i>
+                    <span>නව වීඩියෝවක් එක් කරන්න</span>
+                </button>
+            </header>
+
+            <section class="video-grid" id="videoGrid">
+                <!-- Videos will be rendered here dynamically -->
+            </section>
+        </main>
+    </div>
+
+    <!-- Add Video Modal -->
+    <div class="modal-overlay" id="addModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>වීඩියෝවක් එක් කරන්න (Add Video)</h2>
+                <button class="close-btn" id="closeModalBtn"><i class='bx bx-x'></i></button>
+            </div>
+            <form id="addVideoForm">
+                <div class="input-group">
+                    <label for="videoSubject">විෂය (Subject)</label>
+                    <select id="videoSubject" required>
+                        <option value="" disabled selected>විෂය තෝරන්න...</option>
+                        <option value="geography">භූගෝල විද්‍යාව (Geography)</option>
+                        <option value="media">සන්නිවේදනය හා මාධ්‍ය අධ්‍යයනය (Media)</option>
+                        <option value="sinhala">සිංහල (Sinhala)</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="videoTitle">මාතෘකාව (Title)</label>
+                    <input type="text" id="videoTitle" placeholder="උදා: භූගෝල විද්‍යාව 1 වන පාඩම" required>
+                </div>
+                <div class="input-group">
+                    <label for="videoUrl">YouTube ලින්ක් එක (YouTube URL)</label>
+                    <input type="url" id="videoUrl" placeholder="https://www.youtube.com/watch?v=..." required>
+                </div>
+                <button type="submit" class="submit-btn" id="submitVideoBtn">එක් කරන්න (Add)</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Video Player Modal -->
+    <div class="modal-overlay" id="playerModal">
+        <div class="modal-content player-content">
+            <div class="modal-header">
+                <h2 id="playerTitle">Video Title</h2>
+                <button class="close-btn" id="closePlayerBtn"><i class='bx bx-x'></i></button>
+            </div>
+            <div class="video-wrapper">
+                <iframe id="youtubePlayer" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
