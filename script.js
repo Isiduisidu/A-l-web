@@ -116,9 +116,10 @@ function setupEventListeners() {
 
 // Extract YouTube Video ID
 function extractYouTubeID(url) {
-    const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+    // Advanced regex to handle unlisted, live, shorts, and URLs with tracking parameters
+    const regExp = /(?:https?:\/\/)?(?:www\.)?(?:m\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=|live\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
     const match = url.match(regExp);
-    return (match && match[7].length == 11) ? match[7] : false;
+    return (match && match[1]) ? match[1] : false;
 }
 
 // Render Videos
